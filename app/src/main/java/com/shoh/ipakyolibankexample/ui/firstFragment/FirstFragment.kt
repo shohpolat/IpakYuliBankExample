@@ -54,12 +54,10 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
         (requireActivity() as Main).binding.titleText.text = getString(R.string.conversion)
 
         binding.include.cardview1.setOnClickListener {
-            println("click2")
             presenter.getSellingOrBuyingCards()
         }
 
         binding.include.cardview2.setOnClickListener {
-            println("click1")
             presenter.getExchangingIntoCards()
         }
 
@@ -67,7 +65,6 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
 
         binding.include.exchangeCardview.setOnClickListener {
 
-            println("clicked")
             presenter.replace_cards()
             if (!presenter.isSelling) {
                 binding.include.cardview1Title.text = getString(R.string.buy_text)
@@ -147,11 +144,9 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
 
                     }
                 }
-
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-
 
             }
 
@@ -191,11 +186,7 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
                     disableExchangeButton()
                 }
             }
-
-
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -243,46 +234,16 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
         val dialogbinding = FirstFragmentCardsDialogBinding.inflate(layoutInflater)
         dialog.setContentView(dialogbinding.root)
 
+
         val width = resources.displayMetrics.widthPixels * 0.95
-        var height = 0
-        val one_tenth = resources.displayMetrics.heightPixels / 10
-        when (list.size) {
+        val height = resources.displayMetrics.heightPixels * 0.85
 
-            0 -> {
-                height = one_tenth * 0
-            }
-            1 -> {
-                height = (one_tenth * 1.5).toInt()
-            }
-            2 -> {
-                height = (one_tenth * 2.5).toInt()
-            }
-            3 -> {
-                height = (one_tenth * 3.5).toInt()
-            }
-            4 -> {
-                height = (one_tenth * 4.5).toInt()
-            }
-            5 -> {
-                height = (one_tenth * 5.5).toInt()
-            }
-            6 -> {
-                height = (one_tenth * 6.5).toInt()
-            }
-            7 -> {
-                height = (one_tenth * 7.5).toInt()
-            }
-            8 -> {
-                height = (one_tenth * 8.5).toInt()
-            }
-            else -> {
-                height = (one_tenth * 9.5).toInt()
-            }
+        dialog.window!!.setBackgroundDrawableResource(R.drawable.round_corner_2)
+        dialog.window!!.setLayout(width.toInt(), height.toInt())
 
+        dialogbinding.root.setOnClickListener {
+            dialog.dismiss()
         }
-
-        dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog.window!!.setLayout(width.toInt(), height)
 
         dialogbinding.recyclerview.apply {
             adapter = CardsAdapter(list, numberFormatterUtil).apply {

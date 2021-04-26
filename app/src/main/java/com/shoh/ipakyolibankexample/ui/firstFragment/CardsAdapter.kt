@@ -73,8 +73,8 @@ class CardsAdapter(val list: List<Card>,val numberFormatterUtil: NumberFormatter
         val view =
             FirstFragmentCustomCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        view.root.layoutParams.height =
-            (parent.resources.displayMetrics.heightPixels / 10)
+//        view.root.layoutParams.height =
+//            (parent.resources.displayMetrics.heightPixels / 10)
 
         return ViewHolder(view)
 
