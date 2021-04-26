@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Ipak Yo\'li Bank Example</string>
+    <string name="conversion">Конверсия</string>
+    <string name="courses">Курсы</string>
+    <string name="convert">Перевести</string>
+    <string name="convert_from_text">ПРОДАТ С</string>
+    <string name="buy_text">КУПИТ С</string>
+    <string name="convert_into_text">ЗАЧИСЛИТ НА</string>
+    <string name="enter_sum_text">Введите сумму</string>
+    <string name="currency">Валюта</string>
+    <string name="kurs_sb">курс цб</string>
+    <string name="buying">покупка</string>
+    <string name="selling">ПРОДАЖА</string>
+
+    <string name="date">Дата</string>
+    <string name="sending_card">Карта отправителя:</string>
+    <string name="receiving_card">Карта получателя:</string>
+    <string name="holder_name">Имя получателя:</string>
+    <string name="foreign_amount">Эквивалентная сумма:</string>
+    <string name="uzbek_amount">Сумма перевода:</string>
+    <string name="service_charge">Комиссия:</string>
+    <string name="total">Итого:</string>
+    <string name="pay">Подтвердить</string>
+    <string name="uzs_text">uzs</string>
+    <string name="_0_text">0</string>
+    <string name="usd_text">usd</string>
+</resources>

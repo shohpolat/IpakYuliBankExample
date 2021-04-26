@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.previewFragment.PreviewFragment">
+
+    <include
+        android:id="@+id/date_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/sending_card_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/sending_card_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/receiving_card_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/date_layout" />
+
+    <include
+        android:id="@+id/receiving_card_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/holder_name_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/sending_card_layout" />
+
+    <include
+        android:id="@+id/holder_name_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/foreign_amount_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/receiving_card_layout" />
+
+    <include
+        android:id="@+id/foreign_amount_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/uzbek_amount_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/holder_name_layout" />
+
+    <include
+        android:id="@+id/uzbek_amount_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/service_charge_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/foreign_amount_layout" />
+
+    <include
+        android:id="@+id/service_charge_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/total_amount_layout"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/uzbek_amount_layout" />
+
+    <include
+        android:id="@+id/total_amount_layout"
+        layout="@layout/preview_fragment_single_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/convert_button"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/service_charge_layout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/convert_button"
+        android:text="@string/pay"
+        app:autoSizeMaxTextSize="18sp"
+        app:autoSizeTextType="uniform"
+        style="@style/green_button"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_amount_layout"
+        app:layout_constraintWidth_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
