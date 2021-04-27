@@ -234,7 +234,6 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
         val dialogbinding = FirstFragmentCardsDialogBinding.inflate(layoutInflater)
         dialog.setContentView(dialogbinding.root)
 
-
         val width = resources.displayMetrics.widthPixels * 0.95
         val height = resources.displayMetrics.heightPixels * 0.85
 
@@ -279,18 +278,20 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
     override fun setSelectedCard(card: Card) {
 
         var balance = numberFormatterUtil.formatNumber(card.cardBalance)
+        val imageViewCard2 = binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)
+        val imageViewCard1 = binding.include.cardview2.findViewById<ImageView>(R.id.cardview_1_logo)
 
         when (card.cardType) {
 
             constants.UZKARD -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard2.setImageResource(
                     R.drawable.uzkard
                 )
                 balance += " UZS"
                 setUzbekCardInfo(card, balance)
             }
             constants.HUMO -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard2.setImageResource(
                     R.drawable.humo
                 )
                 balance += " UZS"
@@ -300,14 +301,14 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
 
 
             constants.VISA_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                imageViewCard1.setImageResource(
                     R.drawable.ic_visa
                 )
                 balance += " UZS"
                 setForeignCardInfo(card, balance)
             }
             constants.MASTER_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                imageViewCard1.setImageResource(
                     R.drawable.ic_mastercard
                 )
                 balance += " UZS"
@@ -316,7 +317,7 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
             }
 
             constants.UNION_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                imageViewCard1.setImageResource(
                     R.drawable.union
                 )
                 balance += " UZS"
@@ -342,30 +343,32 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
     override fun setIntoExchangingCard(card: Card) {
 
         var balance = numberFormatterUtil.formatNumber(card.cardBalance)
+        val imageViewCard = binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)
+        val textviewCard = binding.include.cardview2
 
         when (card.cardType) {
 
             constants.UZKARD -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard.setImageResource(
                     R.drawable.uzkard
                 )
                 balance += " UZS"
             }
             constants.HUMO -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard.setImageResource(
                     R.drawable.humo
                 )
                 balance += " UZS"
 
             }
             constants.VISA_CARD -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard.setImageResource(
                     R.drawable.ic_visa
                 )
                 balance += " UZS"
             }
             constants.MASTER_CARD -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard.setImageResource(
                     R.drawable.ic_mastercard
                 )
                 balance += " UZS"
@@ -373,7 +376,7 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
             }
 
             constants.UNION_CARD -> {
-                (binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)).setImageResource(
+                imageViewCard.setImageResource(
                     R.drawable.union
                 )
                 balance += " UZS"
@@ -381,11 +384,11 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
             }
         }
 
-        binding.include.cardview2.findViewById<TextView>(R.id.cardview_2_name).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_2_name).text =
             card.cardHolder
-        binding.include.cardview2.findViewById<TextView>(R.id.cardview_2_balance).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_2_balance).text =
             balance
-        binding.include.cardview2.findViewById<TextView>(R.id.cardview_2_number).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_2_number).text =
             numberFormatterUtil.hideFirst4(card.cardNumber)
 
     }
@@ -393,30 +396,33 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
     override fun setIntoSellingOrBuyingCard(card: Card) {
 
         var balance = numberFormatterUtil.formatNumber(card.cardBalance)
+        val imageViewCard = binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)
+        val textviewCard = binding.include.cardview1
+
 
         when (card.cardType) {
 
             constants.UZKARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                (imageViewCard).setImageResource(
                     R.drawable.uzkard
                 )
                 balance += " UZS"
             }
             constants.HUMO -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                (imageViewCard).setImageResource(
                     R.drawable.humo
                 )
                 balance += " UZS"
 
             }
             constants.VISA_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                (imageViewCard).setImageResource(
                     R.drawable.ic_visa
                 )
                 balance += " UZS"
             }
             constants.MASTER_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                (imageViewCard).setImageResource(
                     R.drawable.ic_mastercard
                 )
                 balance += " UZS"
@@ -424,7 +430,7 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
             }
 
             constants.UNION_CARD -> {
-                (binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)).setImageResource(
+                (imageViewCard).setImageResource(
                     R.drawable.union
                 )
                 balance += " UZS"
@@ -432,11 +438,11 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
             }
         }
 
-        binding.include.cardview1.findViewById<TextView>(R.id.cardview_1_name).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_1_name).text =
             card.cardHolder
-        binding.include.cardview1.findViewById<TextView>(R.id.cardview_1_balance).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_1_balance).text =
             balance
-        binding.include.cardview1.findViewById<TextView>(R.id.cardview_1_number).text =
+        textviewCard.findViewById<TextView>(R.id.cardview_1_number).text =
             numberFormatterUtil.hideFirst4(card.cardNumber)
 
     }
