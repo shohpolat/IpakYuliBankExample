@@ -47,6 +47,10 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
         (requireActivity().application as AppApplication).component.getFragmentComponentFactory()
             .create().inject(this)
 
+        (requireActivity().application as AppApplication).component.getFragmentComponentFactory()
+            .create().inject(presenter)
+
+
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
         bottomSheetBehavior.isHideable = true
@@ -279,7 +283,7 @@ class FirstFragment : MvpAppCompatFragment(R.layout.first_fragment), MainView {
 
         var balance = numberFormatterUtil.formatNumber(card.cardBalance)
         val imageViewCard2 = binding.include.cardview2.findViewById<ImageView>(R.id.cardview_2_logo)
-        val imageViewCard1 = binding.include.cardview2.findViewById<ImageView>(R.id.cardview_1_logo)
+        val imageViewCard1 = binding.include.cardview1.findViewById<ImageView>(R.id.cardview_1_logo)
 
         when (card.cardType) {
 

@@ -4,14 +4,16 @@ import com.shoh.ipakyolibankexample.base.BasePresenter
 import com.shoh.ipakyolibankexample.constants.constants
 import com.shoh.ipakyolibankexample.model.Card
 import com.shoh.ipakyolibankexample.model.Currency
+import com.shoh.ipakyolibankexample.repository.Repository
 import moxy.InjectViewState
+import javax.inject.Inject
 
 @InjectViewState
 class MainPresenter : BasePresenter<MainView>() {
 
-    private val uzbekCards = ArrayList<Card>()
-    private val foreignCards = ArrayList<Card>()
-    private val currencies = ArrayList<Currency>()
+
+    @Inject
+    lateinit var repository: Repository
 
     private var exchanging_from_card =
         Card("10", "Visa", "cardholder name 1", constants.VISA_CARD, "12345567", 426)
@@ -28,9 +30,7 @@ class MainPresenter : BasePresenter<MainView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-        addUzbekCards()
-        addForeignCards()
-        addCurrencies()
+
         viewState.setIntoSellingOrBuyingCard(exchanging_from_card)
         viewState.setIntoExchangingCard(exchanging_to_card)
 
@@ -64,18 +64,18 @@ class MainPresenter : BasePresenter<MainView>() {
     fun getSellingOrBuyingCards() {
         clickedCard = 0
         if (isSelling) {
-            viewState.showUserCards(foreignCards)
+            viewState.showUserCards(repository.getForeignCards())
         } else {
-            viewState.showUserCards(uzbekCards)
+            viewState.showUserCards(repository.getUzbekCards())
         }
     }
 
     fun getExchangingIntoCards() {
         clickedCard = 1
         if (isSelling) {
-            viewState.showUserCards(uzbekCards)
+            viewState.showUserCards(repository.getUzbekCards())
         } else {
-            viewState.showUserCards(foreignCards)
+            viewState.showUserCards(repository.getForeignCards())
         }
     }
 
@@ -92,117 +92,6 @@ class MainPresenter : BasePresenter<MainView>() {
         }
     }
 
-    private fun addCurrencies() {
-
-        currencies.add(Currency(constants.USD, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.JPY, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.EUR, "10 528.59", "10 520.30", "10 456.67"))
-
-        currencies.add(Currency(constants.USD, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.JPY, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.EUR, "10 528.59", "10 520.30", "10 456.67"))
-
-        currencies.add(Currency(constants.USD, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.JPY, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.EUR, "10 528.59", "10 520.30", "10 456.67"))
-
-        currencies.add(Currency(constants.USD, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.JPY, "10 528.59", "10 520.30", "10 456.67"))
-        currencies.add(Currency(constants.EUR, "10 528.59", "10 520.30", "10 456.67"))
-
-    }
-
-    private fun addForeignCards() {
-
-        foreignCards.add(
-            Card(
-                "11",
-                "Visa",
-                "Abdusamatov S",
-                constants.VISA_CARD,
-                "43218765",
-                100
-            )
-        )
-        foreignCards.add(
-            Card(
-                "12",
-                "Master",
-                "Abdusamatov S",
-                constants.MASTER_CARD,
-                "87654321",
-                200
-            )
-        )
-        foreignCards.add(
-            Card(
-                "13",
-                "Visa",
-                "Olimjonov F",
-                constants.VISA_CARD,
-                "22223487",
-                300
-            )
-        )
-
-        foreignCards.add(
-            Card(
-                "14",
-                "Union",
-                "Abdurahmonov Sh",
-                constants.UNION_CARD,
-                "22223335",
-                400
-            )
-        )
-
-    }
-
-    private fun addUzbekCards() {
-        uzbekCards.add(
-            Card(
-                "14",
-                "Humo",
-                "Abdusamatov Shohrux",
-                constants.HUMO,
-                "12345678",
-                1000000
-            )
-        )
-        uzbekCards.add(
-            Card(
-                "1",
-                "Uzkard",
-                "Abdusamatov Shohruxbek",
-                constants.UZKARD,
-                "87654321",
-                554
-            )
-        )
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(Card("1", "Humo", "Olimjonov Farrux", constants.HUMO, "12347586", 1200000))
-        uzbekCards.add(
-            Card(
-                "1",
-                "Uzkard",
-                "Olimjonov Farruxbek",
-                constants.UZKARD,
-                "12348756",
-                655
-            )
-        )
-
-    }
-
-    fun getCurrencies(): List<Currency> = currencies
+    fun getCurrencies(): List<Currency> = repository.getCurrencies()
 
 }
